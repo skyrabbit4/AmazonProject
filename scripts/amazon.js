@@ -79,8 +79,6 @@ products.forEach((product)=>{
       cart.forEach((item)=>{
         cartQuantity=cartQuantity+item.quantity;
       })
-              console.log('cartQuantity', cartQuantity);
-              console.log(cart);
 
             document.querySelector('.js-cart-quantity').innerHTML=cartQuantity;
             });
