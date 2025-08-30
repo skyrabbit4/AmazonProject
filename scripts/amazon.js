@@ -1,5 +1,5 @@
 import{cart} from '../data/cart.js'
-
+import{products} from '../data/priduct.js'
 
 let productsHtml = '';
 
