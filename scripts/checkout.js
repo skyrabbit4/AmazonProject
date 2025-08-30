@@ -1,5 +1,5 @@
 
-import {cart,removeFromCart} from "../data/cart.js";
+import {cart,removeFromCart,updateDeliveryOption} from "../data/cart.js";
 import { products } from "../data/products.js";
 import { formatCurrency } from "./utils/money.js";
 import {hello} from 'https://unpkg.com/supersimpledev@1.0.1/hello.esm.js';
@@ -12,7 +12,7 @@ hello();
 
 const deliveryDate=today.add(7,'days');
 console.log(deliveryDate.format('dddd, MMMM D'));
-
+function renderOrderSummary(){
 
 let cartSummaryHTML='';
 
@@ -46,7 +46,7 @@ cart.forEach((cartItem)=>{
     cartSummaryHTML+=
     `<div class="cart-item-container js-cart-item-container-${matchingproduct.id}">
             <div class="delivery-date">
-              Delivery date: ${deliveryOption ? deliveryDate.format('dddd, MMMM D') : 'Not available'}
+              Delivery date: ${deliveryOption ? dayjs().add(deliveryOption.deliveryDays, 'days').format('dddd, MMMM D') : 'Not available'}
             </div>
 
             <div class="cart-item-details-grid">
@@ -95,7 +95,9 @@ function deliveryOptionsHTML(matchingproduct, cartItem){
 
     const isChecked=option.id===cartItem.deliveryOptionId;
     html += `
-      <div class="delivery-option">
+      <div class="delivery-option js-delivery-option"
+      data-product-id="${matchingproduct.id}"
+      data-delivery-option-id="${option.id}">
         <input type="radio" ${isChecked ? 'checked' : ''} class="delivery-option-input" name="delivery-option-${matchingproduct.id}" value="${option.id}">
         <div>
           <div class="delivery-option-date">${dateString}</div>
@@ -116,5 +118,25 @@ document.querySelectorAll('.js-delete-link')
        removeFromCart(productId);
       document.querySelector(`.js-cart-item-container-${productId}`).remove();
 
-    })
-})
+    });
+});
+
+document.querySelectorAll('.js-delivery-option input')
+.forEach((element)=>{
+  element.addEventListener('change', (event) => {
+    const deliveryOptionId = event.target.value;
+    const productId = event.target.closest('.js-delivery-option').dataset.productId;
+    updateDeliveryOption(productId, deliveryOptionId);
+    // update the displayed delivery date for this cart item
+    const option = deliveryOptions.find(o => o.id === deliveryOptionId);
+    if(option){
+      const dateString = dayjs().add(option.deliveryDays, 'days').format('dddd, MMMM D');
+      const el = document.querySelector(`.js-cart-item-container-${productId} .delivery-date`);
+      if(el) el.textContent = `Delivery date: ${dateString}`;
+      renderOrderSummary();
+    }
+  });
+});
+}
+
+renderOrderSummary();

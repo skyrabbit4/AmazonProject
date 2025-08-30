@@ -49,3 +49,12 @@ function saveToStorage(){
           cart=newCart;
           saveToStorage()
         }
+
+        export function updateDeliveryOption(productId, deliveryOptionId) {
+          cart.forEach((cartItem) => {
+            if (cartItem.productId === productId) {
+              cartItem.deliveryOptionId = deliveryOptionId;
+            }
+          });
+          saveToStorage();
+        }
