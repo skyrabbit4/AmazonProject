@@ -118,7 +118,7 @@ document.querySelectorAll('.js-delivery-option input')
       const el = document.querySelector(`.js-cart-item-container-${productId} .delivery-date`);
       if(el) el.textContent = `Delivery date: ${dateString}`;
     }
-    
+    renderOrderSummary();
     renderPaymentSummary(); // Update payment summary after delivery option change
   });
 });
