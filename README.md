@@ -1,118 +1,102 @@
-# AmazonProject
+# Amazon Project
 
-Short description
-A working title repository for "AmazonProject" — replace this with a concise description of the project's purpose (what it does, who it's for, and why it exists).
+A fully functional Amazon e-commerce clone built with vanilla HTML, CSS, and JavaScript. This project replicates the core Amazon shopping experience including product browsing, cart management, checkout process, and order tracking.
 
-## Table of contents
-- [Features](#features)
-- [Tech stack](#tech-stack)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Usage](#usage)
-- [Running tests](#running-tests)
-- [Project structure](#project-structure)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
+## Overview
 
-## Features
-- Feature A — short description
-- Feature B — short description
-- TODO: Add concrete feature list and screenshots or example outputs.
+This project demonstrates modern web development techniques by recreating Amazon's user interface and functionality:
 
-## Tech stack
-- Primary languages: (e.g., JavaScript/TypeScript, Python, Java) — replace with the actual languages used in this repository.
-- Frameworks & libraries: (e.g., Node.js + Express, React, Flask, Spring Boot) — list major frameworks here.
-- Tools: (e.g., Docker, GitHub Actions) — add CI/CD or containerization tools if used.
+- **Product Catalog**: Browse and search through a variety of products
+- **Shopping Cart**: Add/remove items with quantity management and local storage persistence
+- **Checkout Process**: Complete order flow with delivery options and payment summary
+- **Order Tracking**: Track order status and delivery progress
+- **Responsive Design**: Works on desktop and mobile devices
 
-## Prerequisites
-- Node.js >= 14 (if applicable)
-- Python 3.8+ (if applicable)
-- Docker (optional)
-- Any external services / API keys required (list them here)
+## Quick Start
 
-## Installation
-1. Clone the repository:
-   ```
+1. **Clone the repository:**
+   ```bash
    git clone https://github.com/skyrabbit4/AmazonProject.git
-   ```
-2. Change into the project directory:
-   ```
    cd AmazonProject
    ```
-3. Install dependencies (example for Node.js projects):
-   ```
-   npm install
-   ```
-   or for Python:
-   ```
-   pip install -r requirements.txt
-   ```
 
-## Configuration
-- Copy environment example:
-  ```
-  cp .env.example .env
-  ```
-- Edit `.env` and set required environment variables (API keys, DB connection strings, etc.)
+2. **Run the application:**
+   - **Option 1 - Simple HTTP Server (Python):**
+     ```bash
+     python3 -m http.server 8000
+     ```
+     Then open http://localhost:8000/amazon.html
+   
+   - **Option 2 - Live Server (VS Code):**
+     Install the Live Server extension and right-click on `amazon.html` → "Open with Live Server"
+   
+   - **Option 3 - Direct file access:**
+     Simply open `amazon.html` in your browser (some features may be limited due to CORS)
 
-## Usage
-- Start the development server (example):
-  ```
-  npm run dev
-  ```
-  or
-  ```
-  python -m your_app_module
-  ```
-- Build for production (example):
-  ```
-  npm run build
-  ```
+## Features
 
-Include example API endpoints or usage examples here.
+- **🛍️ Product Browsing**: Interactive product grid with ratings, prices, and images
+- **🛒 Shopping Cart**: Dynamic cart with quantity updates and item removal
+- **💳 Checkout**: Multi-step checkout with delivery options (FREE, Standard, Express)
+- **📦 Order Management**: Order summary with tax calculation and payment processing
+- **📍 Order Tracking**: Real-time order status and delivery tracking
+- **💾 Data Persistence**: Cart data saved to localStorage
+- **📱 Responsive Design**: Mobile-friendly interface
 
-## Running tests
-- Run unit tests:
-  ```
-  npm test
-  ```
-  or
-  ```
-  pytest
-  ```
+## Project Structure
 
-Add instructions for integration tests, test coverage, and any test environment setup.
+- **`amazon.html`** — Main store homepage
+- **`checkout.html`** — Shopping cart and checkout page
+- **`orders.html`** — Order history and management
+- **`tracking.html`** — Package tracking page
+- **`data/`** — Product data, cart logic, and delivery options
+  - `products.js` — Product catalog and search functions
+  - `cart.js` — Shopping cart management and localStorage
+  - `deliveryOptions.js` — Shipping options and pricing
+- **`scripts/`** — JavaScript modules
+  - `amazon.js` — Homepage functionality
+  - `checkout/` — Checkout process modules
+  - `utils/` — Utility functions (currency formatting, etc.)
+- **`styles/`** — CSS styling
+  - `shared/` — Common styles across pages
+  - `pages/` — Page-specific styling
+- **`images/`** — Product images and UI assets
 
-## Project structure
-- src/ — application source code
-- tests/ — test suites
-- docs/ — documentation and design notes
-- scripts/ — helper scripts
-- README.md — this file
+## Technology Stack
 
-Adjust the above to match the repository's actual layout.
+- **Frontend**: HTML5, CSS3, ES6+ JavaScript
+- **Architecture**: Modular ES6 imports/exports
+- **Storage**: Browser localStorage for cart persistence
+- **Styling**: Custom CSS with responsive design
+- **External Libraries**: Day.js for date formatting (via CDN)
+
+## Development
+
+No build process required! This is a static website that runs directly in the browser.
+
+**File Structure Best Practices:**
+- Keep modules small and focused on single responsibilities
+- Use ES6 import/export for clean module organization
+- Store shared utilities in the `scripts/utils/` directory
+- Follow the existing CSS organization pattern
 
 ## Contributing
-Contributions are welcome — please follow these steps:
-1. Fork the repository.
-2. Create a branch: `git checkout -b feature/your-feature`
-3. Commit your changes: `git commit -m "Add some feature"`
-4. Push branch: `git push origin feature/your-feature`
-5. Open a pull request and describe the change.
 
-Include contribution guidelines, code style, and testing requirements if available.
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Make your changes and test them locally
+4. Commit your changes (`git commit -m 'Add amazing feature'`)
+5. Push to the branch (`git push origin feature/amazing-feature`)
+6. Open a Pull Request
+
+Please keep changes small and well-documented. Test your changes by running the application locally.
 
 ## License
-Specify the project's license (e.g., MIT). If you don't have one yet, add a license file (LICENSE) and link it here.
+
+This project is created for educational purposes. Please specify a license in LICENSE file if you plan to distribute it.
 
 ## Contact
-For questions or help, open an issue or contact the repository owner: @skyrabbit4
 
----
-
-Maintainer notes:
-- Replace all placeholders (description, tech stack, commands) with concrete project details.
-- Add badges (build, coverage, license) at the top once CI and license are configured.
-- Add screenshots, architecture diagrams, and example requests/responses to make onboarding easier.
+- **GitHub Issues**: Open an issue for bug reports or feature requests
+- **Developer**: Contact @skyrabbit4
+- **Project Repository**: https://github.com/skyrabbit4/AmazonProject
