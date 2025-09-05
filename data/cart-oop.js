@@ -1,9 +1,9 @@
 
-
+function Cart(localStorageKey){
 const cart = {
   cartItems: undefined,
   loadFromStorage: function () {
-    this.cartItems = JSON.parse(localStorage.getItem('cart-oop'));
+    this.cartItems = JSON.parse(localStorage.getItem(localStorageKey));
     if (!this.cartItems) {
       this.cartItems = [{
         productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -17,7 +17,7 @@ const cart = {
     }
   },
   saveToStorage: function () {
-    localStorage.setItem('cart-oop', JSON.stringify(this.cartItems));
+    localStorage.setItem(localStorageKey, JSON.stringify(this.cartItems));
   },
   addToCart: function (productId) {
     let matchingItem;
@@ -56,6 +56,21 @@ const cart = {
     this.saveToStorage();
   }
 };
+return cart;
+}
+
+//using a function to genrate cart objects
+const cart= Cart('cart-oop');
+const businessCart= Cart('cart-business');
+
 
 cart.loadFromStorage();
+
+businessCart.loadFromStorage();
+
+
+
 console.log(cart);
+console.log(businessCart);
+
+//easy to create multpple objects
