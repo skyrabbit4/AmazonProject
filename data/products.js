@@ -78,6 +78,60 @@ const product1=new Product(
   }
 );
 
+export let products=[];
+
+export function loadProducts(fun){
+const xhr=  new XMLHttpRequest();
+xhr.addEventListener('load',()=>{
+products=JSON.parse(xhr.response).map((productDetails)=>{
+  if(productDetails.type==='clothing'){
+   return new Clothing(productDetails);
+  }
+  return new Product(productDetails);
+});
+console.log('load products');
+fun();
+});
+
+//set upthe request
+xhr.open('GET','https://supersimplebackend.dev/products')
+xhr.send();
+}
+
+
+
+/*
+const date =new Date();
+console.log(date);
+
+console.log(date.toLocaleTimeString());
+*/
+
+/*
+console.log(this);
+
+function logThis(){
+  console.log(this);
+}
+
+logThis();
+
+logThis.call('hello');
+
+const object3 ={
+method:()=>{
+  console.log(this);
+}
+}
+
+object3.method(); */
+
+
+/*
+
+
+
+
 
 
 export const products = [
@@ -747,3 +801,5 @@ export const products = [
 });
 
 console.log(products);
+
+*/
