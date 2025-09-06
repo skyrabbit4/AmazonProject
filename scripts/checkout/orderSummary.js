@@ -11,7 +11,7 @@ hello();
 export function renderOrderSummary(){
 
 let cartSummaryHTML='';
-
+ 
 cart.forEach((cartItem)=>{ 
 
     const productId=cartItem.productId;
@@ -41,7 +41,7 @@ cart.forEach((cartItem)=>{
                     ${matchingproduct.name}
                 </div>
                 <div class="product-price">
-                  $${formatCurrency(matchingproduct.priceCents)}
+                  ${matchingproduct.getPrice()}
                 </div>
                 <div class="product-quantity">
                   <span>
